@@ -26,8 +26,10 @@ for d in ${SRC_DIRS[@]}; do
   done
 done
 
+source ~/.bash_profile
+
 # install mac brews
-if [ `uname` = 'Darwin' ]; then
+if is_mac; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   cd ${SRC_DIR}
   brew tap Homebrew/bundle
