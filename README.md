@@ -4,6 +4,7 @@
 
 - bash
 - git
+- (Mac) Xcode
 
 ## usage
 
