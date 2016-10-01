@@ -34,7 +34,6 @@ mas 'Pixelmator (3.5.1)', id: 407963104
 mas 'SyncDifferent (1.2)', id: 516918029
 mas 'GarageBand (10.1.2)', id: 682658836
 mas 'Pages (5.6.2)', id: 409201541
-mas 'QCamera (1.0)', id: 598853070
 mas 'Keynote (6.6.2)', id: 409183694
 mas 'Xcode (8.0)', id: 497799835
 mas 'The Unarchiver (3.11.1)', id: 425424353
