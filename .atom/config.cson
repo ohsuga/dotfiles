@@ -1,0 +1,11 @@
+"*":
+  core:
+    disabledPackages: [
+      "spell-check"
+    ]
+  editor:
+    fontSize: 12
+  "exception-reporting":
+    userId: "48a88eaa-af09-69fe-91e3-b60c5afc99a6"
+  welcome:
+    showOnStartup: false

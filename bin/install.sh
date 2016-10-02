@@ -2,7 +2,7 @@
 
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
-DOT_DIRS=(".bash.d")
+DOT_DIRS=(".bash.d" ".atom")
 IGNORE_FILES=(".git" ".DS_Store")
 
 # mkdir DOT_DIRS if not exist
