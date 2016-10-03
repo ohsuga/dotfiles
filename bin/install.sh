@@ -34,4 +34,5 @@ if is_mac; then
   cd ${SRC_DIR}
   brew tap Homebrew/bundle
   brew bundle
+  source ~/.bash_profile # enable pyenv & scalaenv
 fi
