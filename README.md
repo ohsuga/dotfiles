@@ -26,6 +26,7 @@ powershell -NoProfile -ExecutionPolicy unrestricted -Command ".\tools\chocolatey
 ```
 
     - 以降の利用のため、環境変数にプロクシ情報をセット
+
 ```
 setx /M http_proxy http://user:pass@host:port
 setx /M https_proxy http://user:pass@host:port
