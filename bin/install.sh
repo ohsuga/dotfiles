@@ -2,14 +2,14 @@
 
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
-DOT_DIRS=(".bash.d" ".atom")
+DOT_DIRS=(".bash.d" ".atom" ".vim/cache/dein" ".vim/rc")
 IGNORE_FILES=(".git" ".DS_Store")
 
 # mkdir DOT_DIRS if not exist
 for d in ${DOT_DIRS[@]}; do
   path="${HOME}/${d}"
   if [ ! -d "${path}" ]; then
-    mkdir "${path}"
+    mkdir -p "${path}"
   fi
   SRC_DIRS+=($SRC_DIR/${d})
 done
