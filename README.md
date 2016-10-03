@@ -24,6 +24,11 @@ $ bash ./bin/install.sh
 ```
 powershell -NoProfile -ExecutionPolicy unrestricted -Command ".\tools\chocolateyInstall.ps1"
 ```
+    - 以降の利用のため、環境変数にプロクシ情報をセット
+```
+setx /M http_proxy http://user:pass@host:port
+setx /M https_proxy http://user:pass@host:port
+```
   - packages.config をダウンロード
   - 管理者権限でコマンドプロンプトを開きpackages.config のあるディレクトリで
 ```
