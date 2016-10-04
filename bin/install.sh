@@ -2,7 +2,7 @@
 
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
-DOT_DIRS=(".bash.d" ".atom" ".vim/cache/dein" ".vim/rc")
+DOT_DIRS=(".bash.d" ".atom" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
 IGNORE_FILES=(".git" ".DS_Store")
 
 # mkdir DOT_DIRS if not exist
@@ -26,7 +26,7 @@ for d in ${SRC_DIRS[@]}; do
   done
 done
 
-source ~/.bash_profile
+source ${SRC_DIR}/.bash_profile
 
 # install mac brews
 if is_mac; then
@@ -40,4 +40,14 @@ fi
 # config win
 if is_win; then
   reg add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -v HideFileExt -t REG_DWORD -d 0 -f
+  cd ~/.vms/pdev
+  vagrant up
+fi
+
+if ! is_mac; then
+  rm -f ~/Brewfile
+fi
+
+if ! is_win; then
+  rm -f ~/packages.config
 fi
