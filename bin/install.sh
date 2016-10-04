@@ -2,7 +2,7 @@
 
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
-DOT_DIRS=(".bash.d" ".atom" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
+DOT_DIRS=(".bash.d" ".atom" ".vim" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
 IGNORE_FILES=(".git" ".DS_Store" "README.md")
 
 # mkdir DOT_DIRS if not exist
