@@ -36,3 +36,8 @@ if is_mac; then
   brew bundle
   source ~/.bash_profile # enable pyenv & scalaenv
 fi
+
+# config win
+if is_win; then
+  reg add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -v HideFileExt -t REG_DWORD -d 0 -f
+fi

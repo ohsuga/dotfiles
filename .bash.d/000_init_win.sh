@@ -10,4 +10,5 @@ if [[ `uname` = MINGW* ]]; then
   alias netstat='wincmd netstat'
   alias netsh='wincmd netsh'
   alias ping='wincmd ping'
+  alias reg='wincmd reg'
 fi
