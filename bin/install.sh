@@ -3,7 +3,7 @@
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
 DOT_DIRS=(".bash.d" ".atom" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
-IGNORE_FILES=(".git" ".DS_Store")
+IGNORE_FILES=(".git" ".DS_Store" "README.md")
 
 # mkdir DOT_DIRS if not exist
 for d in ${DOT_DIRS[@]}; do
@@ -15,6 +15,7 @@ for d in ${DOT_DIRS[@]}; do
 done
 
 # ln -s SRC_DIR/files $HOME/files (ignore IGNORE_FILES)
+ts=`date +'%Y%m%d_%H%M%S'`
 for d in ${SRC_DIRS[@]}; do
   for f in `\find ${d} -maxdepth 1 -type f`; do
     fname=${f##*/}
@@ -22,6 +23,9 @@ for d in ${SRC_DIRS[@]}; do
       [[ ${fname} == ${ignore} ]] && continue 2
     done
     dest=${f/${SRC_DIR}/${HOME}}
+    if [ -f "$dest" ]; then
+      mv "$dest" "$dest".bak.${ts}
+    fi
     ln -s $f ${dest}
   done
 done
@@ -34,7 +38,7 @@ if is_mac; then
   cd ${SRC_DIR}
   brew tap Homebrew/bundle
   brew bundle
-  source ~/.bash_profile # enable pyenv & scalaenv
+  source ${SRC_DIR}/.bash_profile # enable pyenv & scalaenv
 fi
 
 # config win
