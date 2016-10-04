@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -f /etc/bash_profile ]; then
+  source /etc/bash_profile
+fi
+
 function is_mac {
   if [[ `uname` == Darwin ]] ; then
     return 0
