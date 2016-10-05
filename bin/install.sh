@@ -45,7 +45,9 @@ fi
 if is_win; then
   reg add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -v HideFileExt -t REG_DWORD -d 0 -f
   cd ~/.vms/pdev
-  vagrant up
+  if [ ! -d ~/.vms/pdev/.vagrant ]; then
+    vagrant up
+  fi
 fi
 
 if ! is_mac; then
