@@ -21,13 +21,13 @@ ts=`date +'%Y%m%d_%H%M%S'`
 for d in ${SRC_DIRS[@]}; do
   for f in `\find ${d} -maxdepth 1 -type f`; do
     fname=${f##*/}
-    if [[ " ${IGNORE_FILES[@] " =~ " ${fname} " ]]; then
+    if [[ " ${IGNORE_FILES[@]} " =~ " ${fname} " ]]; then
       continue
     fi
-    if ! is_mac && [[ " ${MAC_FILES[@] " =~ " ${fname} " ]]; then
+    if ! is_mac && [[ " ${MAC_FILES[@]} " =~ " ${fname} " ]]; then
       continue
     fi
-    if ! is_win && [[ " ${WIN_FILES[@] " =~ " ${fname} " ]]; then
+    if ! is_win && [[ " ${WIN_FILES[@]} " =~ " ${fname} " ]]; then
       continue
     fi
     dest=${f/${SRC_DIR}/${HOME}}
