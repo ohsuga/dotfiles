@@ -16,6 +16,8 @@ for d in ${DOT_DIRS[@]}; do
   SRC_DIRS+=($SRC_DIR/${d})
 done
 
+source ${SRC_DIR}/.bash_profile
+
 # ln -s SRC_DIR/files $HOME/files (ignore IGNORE_FILES)
 ts=`date +'%Y%m%d_%H%M%S'`
 for d in ${SRC_DIRS[@]}; do
@@ -37,8 +39,6 @@ for d in ${SRC_DIRS[@]}; do
     ln -s $f ${dest}
   done
 done
-
-source ${SRC_DIR}/.bash_profile
 
 # install mac brews
 if is_mac; then
