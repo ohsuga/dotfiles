@@ -34,3 +34,16 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+" md もmarkdownファイルとみなす
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" swp ファイルは作らない
+set noswapfile
+
+" 行番号表示
+set number
+
+set foldtext=FoldCCtext()
+set foldcolumn=5
+set fillchars=vert:\|

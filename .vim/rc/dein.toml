@@ -1,2 +1,9 @@
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
