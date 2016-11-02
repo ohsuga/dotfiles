@@ -47,3 +47,4 @@ set number
 set foldtext=FoldCCtext()
 set foldcolumn=5
 set fillchars=vert:\|
+
