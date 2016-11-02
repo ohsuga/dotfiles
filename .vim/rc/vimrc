@@ -35,9 +35,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-" md もmarkdownファイルとみなす
-au BufRead,BufNewFile *.md set filetype=markdown
-
 " swp ファイルは作らない
 set noswapfile
 
