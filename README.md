@@ -30,7 +30,7 @@ setx /M http_proxy http://user:pass@host:port
 setx /M https_proxy http://user:pass@host:port
 ```
   - packages.config をダウンロード
-  - 管理者権限でコマンドプロンプトを開きpackages.config のあるディレクトリで
+  - 管理者権限で再度コマンドプロンプトを開きpackages.config のあるディレクトリで
 ```
 cinst -y packages.config
 ```

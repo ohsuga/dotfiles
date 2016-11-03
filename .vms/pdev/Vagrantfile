@@ -1,0 +1,65 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ansible_vars = {}
+ip_addr = {
+  :pdev => "192.168.56.10"
+}
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/centos-7.2"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    # vb.memory = "2048"
+  end
+  config.vm.synced_folder "./", "/vagrant",
+    owner: "vagrant",
+    mount_options: ["dmode=775,fmode=600"]
+
+  $script = ""
+  if ENV['HTTP_PROXY']
+    env_proxy = ENV['HTTP_PROXY']
+    if ! /^http/.match(env_proxy)
+      env_proxy = 'http://' + env_proxy
+    end
+    m = /^(.+:\/\/)((.+):(.+)@)?([^:]+)(:(\d+))?$/.match(env_proxy)
+    proxy_user = m[3]
+    proxy_pass = m[4]
+    proxy_url = m[1]+m[5]
+    proxy_host = m[5]
+    proxy_port = m[7]
+    if proxy_port
+      proxy_url += m[6]
+    end
+    proxy_setting = "proxy=%s\\n"%proxy_url
+    ansible_vars['proxy_full_url'] = env_proxy
+    ansible_vars['proxy_url'] = proxy_url
+    ansible_vars['proxy_host'] = proxy_host
+    ansible_vars['proxy_port'] = proxy_port
+    ansible_vars['noproxy_hosts'] = ip_addr.keys.map{|s|s.to_s} + ip_addr.values + %w(localhost 127.0.0.1)
+    if proxy_user
+      proxy_setting += "proxy_username=%s\\nproxy_password=%s\\n"%[proxy_user,proxy_pass]
+      ansible_vars['proxy_username'] = proxy_user
+      ansible_vars['proxy_password'] = proxy_pass
+    end
+
+    $script += <<-SHELL
+    grep 'proxy=' /etc/yum.conf
+    if [ ! $? = 0 ]; then
+      echo -e "#{proxy_setting}" >> /etc/yum.conf
+    fi
+    yum install -y vim git
+    sudo -u vagrant git config --global http.proxy #{ansible_vars['proxy_full_url']}
+    sudo -u vagrant git config --global https.proxy #{ansible_vars['proxy_full_url']}
+    sudo -u vagrant mkdir /home/vagrant/.dotfiles
+    cd /home/vagrant/.dotfiles
+    sudo -u vagrant git clone http://github.com/ohsuga/dotfiles.git .
+    sudo -u vagrant bash ./bin/install.sh
+    SHELL
+  end
+
+  config.vm.define :pdev do | node |
+    node.vm.network "private_network", ip: ip_addr[:pdev]
+    node.vm.provision :shell, :inline => $script
+  end
+end

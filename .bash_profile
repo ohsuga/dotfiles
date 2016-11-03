@@ -22,10 +22,9 @@ function is_linux {
   return 1
 }
 
-
 export LANG=ja_JP.UTF-8
 
-if [ -d "${HOME}/.bash.d" -a "$(ls ${HOME}/.bash.d/*.sh)" != '' ] ; then
+if [ -d "${HOME}/.bash.d" -a "$(ls ${HOME}/.bash.d/*.sh 2>/dev/null)" != '' ] ; then
   for f in "${HOME}"/.bash.d/*.sh ; do
     source "$f"
   done

@@ -1,2 +1,15 @@
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+hook_add = '''
+  " md もmarkdownファイルとみなす
+  au BufRead,BufNewFile *.md set filetype=markdown
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  set statusline+=%{fugitive#statusline()}
+'''

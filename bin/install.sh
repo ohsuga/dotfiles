@@ -4,6 +4,8 @@ SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
 DOT_DIRS=(".bash.d" ".atom" ".vim" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
 IGNORE_FILES=(".git" ".DS_Store" "README.md")
+MAC_FILES=("Brewfile")
+WIN_FILES=("packages.config")
 
 # mkdir DOT_DIRS if not exist
 for d in ${DOT_DIRS[@]}; do
@@ -14,6 +16,8 @@ for d in ${DOT_DIRS[@]}; do
   SRC_DIRS+=($SRC_DIR/${d})
 done
 
+source ${SRC_DIR}/.bash_profile
+
 # ln -s SRC_DIR/files $HOME/files (ignore IGNORE_FILES)
 ts=`date +'%Y%m%d_%H%M%S'`
 for d in ${SRC_DIRS[@]}; do
@@ -22,6 +26,15 @@ for d in ${SRC_DIRS[@]}; do
     for ignore in ${IGNORE_FILES[@]}; do
       [[ ${fname} == ${ignore} ]] && continue 2
     done
+    if [[ " ${IGNORE_FILES[@]} " =~ " ${fname} " ]]; then
+      continue
+    fi
+    if ! is_mac && [[ " ${MAC_FILES[@]} " =~ " ${fname} " ]]; then
+      continue
+    fi
+    if ! is_win && [[ " ${WIN_FILES[@]} " =~ " ${fname} " ]]; then
+      continue
+    fi
     dest=${f/${SRC_DIR}/${HOME}}
     if [ -f "$dest" ]; then
       mv "$dest" "$dest".bak.${ts}
@@ -54,4 +67,7 @@ fi
 
 if ! is_win; then
   rm -f ~/packages.config
+  if [ ! -d ~/.vms/pdev/.vagrant ]; then
+    vagrant up
+  fi
 fi
