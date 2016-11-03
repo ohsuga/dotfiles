@@ -16,3 +16,13 @@ repo = 'tpope/vim-fugitive'
 hook_add = '''
   set statusline+=%{fugitive#statusline()}
 '''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add '''
+  " close vimfiler automatically when there are only vimfiler open
+  autocmd MyAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_enable_auto_cd = 1
+  let g:vimfiler_ignore_pattern = "\%(\.pyc$\)"
+'''
