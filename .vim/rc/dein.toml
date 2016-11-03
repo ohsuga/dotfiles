@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
 repo = 'derekwyatt/vim-scala'
 
 [[plugins]]
