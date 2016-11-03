@@ -47,6 +47,5 @@ set fillchars=vert:\|
 
 " mac で syntax on
 if system('uname') == "Darwin\n"
-  :set term=xterm-256color
   :syntax on
 endif
