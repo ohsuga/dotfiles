@@ -1,3 +1,11 @@
+set encoding=utf-8
+scriptencoding utf-8
+
+" release autogroup in MyAutoCmd
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.vim/cache/dein')
 " dein.vim 本体
@@ -35,13 +43,33 @@ if dein#check_install()
   call dein#install()
 endif
 
+" mac で syntax on
+if system('uname') == "Darwin\n"
+  :syntax on
+endif
+
 " swp ファイルは作らない
+set nowritebackup
+set nobackup
 set noswapfile
 
-" 行番号表示
-set number
+set number              " 行番号の表示
+set wrap                " 長いテキストの折り返し
+set textwidth=0         " 自動的に改行が入るのを無効化
 
-set foldtext=FoldCCtext()
-set foldcolumn=5
-set fillchars=vert:\|
+" 検索関連
+set ignorecase          " 大文字小文字を区別しない
+set smartcase           " 検索文字に大文字がある場合は大文字小文字を区別
+set incsearch           " インクリメンタルサーチ
+set hlsearch            " 検索マッチテキストをハイライト (2013-07-03 14:30 修正）
+
+" バックスラッシュやクエスチョンを状況に合わせ自動的にエスケープ
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+set showmatch           " 対応する括弧などをハイライト表示する
+set matchtime=3         " 対応括弧のハイライト表示を3秒にする
+
+" 対応括弧に'<'と'>'のペアを追加
+set matchpairs& matchpairs+=<:>
 
