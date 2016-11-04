@@ -19,7 +19,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-hook_add '''
+hook_add = '''
   " close vimfiler automatically when there are only vimfiler open
   autocmd MyAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
   let g:vimfiler_as_default_explorer = 1
