@@ -1,10 +1,27 @@
 [[plugins]]
+# 文字前後修飾
 repo = 'tpope/vim-surround'
 
 [[plugins]]
+# ステータスラインに情報表示
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  set laststatus=2 " ステータスラインを常に表示
+  set showmode " 現在のモードを表示
+  set showcmd " 打ったコマンドをステータスラインの下に表示
+  set ruler " ステータスラインの右側にカーソルの現在位置を表示する
+'''
+
+[[plugins]]
+# インデントの可視化
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+# scalaプラグイン
 repo = 'derekwyatt/vim-scala'
 
 [[plugins]]
+# Markdownプラグイン
 repo = 'plasticboy/vim-markdown'
 hook_add = '''
   " md もmarkdownファイルとみなす
@@ -12,12 +29,14 @@ hook_add = '''
 '''
 
 [[plugins]]
+# git プラグイン
 repo = 'tpope/vim-fugitive'
 hook_add = '''
   set statusline+=%{fugitive#statusline()}
 '''
 
 [[plugins]]
+# ファイラ
 repo = 'Shougo/unite.vim'
 hook_add = '''
   " close vimfiler automatically when there are only vimfiler open
