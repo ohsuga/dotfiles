@@ -3,6 +3,7 @@
     disabledPackages: [
       "spell-check"
     ]
+    telemetryConsent: "limited"
   editor:
     fontSize: 12
   "exception-reporting":
