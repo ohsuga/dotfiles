@@ -52,6 +52,7 @@ if is_mac; then
   brew tap Homebrew/bundle
   brew bundle
   source ${SRC_DIR}/.bash_profile # enable pyenv & scalaenv
+  xcode-select --install
 fi
 
 # config win
