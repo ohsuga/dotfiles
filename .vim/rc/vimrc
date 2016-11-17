@@ -6,6 +6,9 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+" for pyenv
+let $PATH = "~/.pyenv/shims:".$PATH
+
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.vim/cache/dein')
 " dein.vim 本体
@@ -43,9 +46,23 @@ if dein#check_install()
   call dein#install()
 endif
 
-" mac で syntax on
 if system('uname') == "Darwin\n"
+  " mac で syntax on
   :syntax on
+
+  " for vim_pyenv
+  let s:python2home = $PYENV_ROOT . '/versions/2.7.12'
+  let s:python2dll  = $PYENV_ROOT . '/versions/2.7.12/lib/libpython2.7.dylib'
+  let s:python3home = $PYENV_ROOT . '/versions/3.5.2'
+  let s:python3dll  = $PYENV_ROOT . '/versions/3.5.2/lib/libpython3.5m.dylib'
+  
+"  let &pythondll = s:python2dll
+"  let $PYTHONHOME = s:python2home
+"  execute 'python import sys'
+  
+"  let &pythonthreedll = s:python3dll
+"  let $PYTHONHOME = s:python3home
+"  execute 'python3 import sys'
 endif
 
 " swp ファイルは作らない

@@ -16,6 +16,14 @@ hook_add = '''
 # インデントの可視化
 repo = 'Yggdroot/indentLine'
 
+
+#[[plugins]]
+#repo = 'lambdalisue/vim-pyenv'
+
+#[[plugins]]
+# python 補完
+#repo = 'davidhalter/jedi-vim'
+
 [[plugins]]
 # scalaプラグイン
 repo = 'derekwyatt/vim-scala'

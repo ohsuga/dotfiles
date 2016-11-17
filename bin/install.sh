@@ -49,10 +49,25 @@ source ${SRC_DIR}/.bash_profile
 if is_mac; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   cd ${SRC_DIR}
+  xcode-select --install
   brew tap Homebrew/bundle
+  brew link autoconf pkg-config
   brew bundle
   source ${SRC_DIR}/.bash_profile # enable pyenv & scalaenv
-  xcode-select --install
+  PYTHON_CONFIGURE_OPTS="--enable-shared" \
+    LDSHARED="clang -bundle" \
+    LDCXXSHARED="clang++ -bundle" \
+    BLDSHARED="clang -bundle -lpython2.7" \
+    pyenv install 2.7.11
+  PYTHON_CONFIGURE_OPTS="--enable-shared" \
+    LDSHARED="clang -bundle" \
+    LDCXXSHARED="clang++ -bundle" \
+    BLDSHARED="clang -bundle -lpython3.5m" \
+    pyenv install 3.5.2
+
+  if [ ! -d ~/.vms/pdev/.vagrant ]; then
+    vagrant up
+  fi
 fi
 
 # config win
@@ -68,7 +83,4 @@ fi
 
 if ! is_win; then
   rm -f ~/packages.config
-  if [ ! -d ~/.vms/pdev/.vagrant ]; then
-    vagrant up
-  fi
 fi
