@@ -17,6 +17,7 @@ brew 'pstree'
 brew 'readline'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
+brew 'scala'
 brew 'scalaenv'
 brew 'sbt'
 brew 'vim', args: ['with-properly-linked-python2-python3', 'HEAD']
