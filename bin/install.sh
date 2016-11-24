@@ -2,7 +2,7 @@
 
 SRC_DIR="${HOME}/.dotfiles"
 SRC_DIRS=(${SRC_DIR})
-DOT_DIRS=(".bash.d" ".atom" ".vim" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
+DOT_DIRS=(".bash.d" ".vim" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
 IGNORE_FILES=(".git" ".DS_Store" "README.md")
 MAC_FILES=("Brewfile")
 WIN_FILES=("packages.config")
