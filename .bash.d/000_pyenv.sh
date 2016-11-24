@@ -1,7 +1,9 @@
-if which pyenv >& /dev/null; then
-  if is_mac; then
-    export PYENV_ROOT=/usr/local/var/pyenv
-  fi
-  eval "$(pyenv init -)"
+export PATH=$HOME/.local/bin/:$PATH
+if is_mac; then
+  export PYENV_ROOT=/usr/local/var/pyenv
+else
+  export PYENV_ROOT="$HOME/.pyenv"
 fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
