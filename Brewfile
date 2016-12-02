@@ -22,7 +22,6 @@ brew 'scala'
 brew 'scalaenv'
 brew 'sbt'
 brew 'r'
-brew 'maven'
 brew 'vim', args: ['with-properly-linked-python2-python3', 'HEAD']
 cask 'google-chrome'
 #cask 'google-drive'
