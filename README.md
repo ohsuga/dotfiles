@@ -35,3 +35,4 @@ setx /M https_proxy http://user:pass@host:port
 cinst -y packages.config
 ```
 
+  - ~/.dotfiles/imej_keymap.reg をダブルクリックし、IMEのキーマップをインポート
