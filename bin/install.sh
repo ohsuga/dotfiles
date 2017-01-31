@@ -5,7 +5,7 @@ SRC_DIRS=(${SRC_DIR})
 DOT_DIRS=(".bash.d" ".vim" ".vim/cache/dein" ".vim/rc" ".vms/pdev")
 IGNORE_FILES=(".git" ".DS_Store" "README.md")
 MAC_FILES=("Brewfile")
-WIN_FILES=("packages.config")
+WIN_FILES=("packages.config" "imej_keymap.reg")
 
 # mkdir DOT_DIRS if not exist
 for d in ${DOT_DIRS[@]}; do
@@ -73,14 +73,8 @@ fi
 # config win
 if is_win; then
   reg add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -v HideFileExt -t REG_DWORD -d 0 -f
+  cd ${SRC_DIR}
+  reg import imej_keymap.reg
   cd ~/.vms/pdev
   vagrant up
-fi
-
-if ! is_mac; then
-  rm -f ~/Brewfile
-fi
-
-if ! is_win; then
-  rm -f ~/packages.config
 fi

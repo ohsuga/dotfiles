@@ -34,4 +34,3 @@ setx /M https_proxy http://user:pass@host:port
 ```
 cinst -y packages.config
 ```
-
