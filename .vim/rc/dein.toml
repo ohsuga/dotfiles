@@ -42,6 +42,7 @@ repo = 'plasticboy/vim-markdown'
 hook_add = '''
   " md もmarkdownファイルとみなす
   au BufRead,BufNewFile *.md set filetype=markdown
+  let g:vim_markdown_folding_level = 6
 '''
 
 [[plugins]]
