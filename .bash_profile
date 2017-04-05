@@ -31,6 +31,6 @@ if [ -d "${HOME}/.bash.d" -a "$(ls ${HOME}/.bash.d/*.sh 2>/dev/null)" != '' ] ; 
   unset f
 fi
 
-if [ -f "${home}/.bashrc" ] ; then
-  source "${home}/.bashrc"
+if [ -f "${HOME}/.bashrc" ] ; then
+  source "${HOME}/.bashrc"
 fi
